@@ -1,20 +1,24 @@
-module.exports = dotpath
+type FixMeLater = any;
 
-function dotpath (str) {
-  var parts = str.toString().split('.')
-  var len = parts.length
+type ObjectWithPath = {
+  [key: string]: any;
+};
 
-  return function parse (obj) {
-    var testKey
+export default function dotpath(str: string) {
+  const parts = str.split(".");
+  const len = parts.length;
+
+  return function parse(obj: ObjectWithPath) {
+    let testKey;
 
     for (var i = 0; i < len; ++i) {
-      testKey = parts[i]
+      testKey = parts[i];
 
-      if (!obj) return
+      if (!obj) return;
 
-      obj = obj[testKey]
+      obj = obj[testKey];
     }
 
-    return obj
-  }
+    return obj;
+  };
 }
