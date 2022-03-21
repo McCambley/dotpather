@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function dotpath(str) {
-    const parts = str.split(".");
-    const len = parts.length;
+    let parts = str.split(".");
+    let len = parts.length;
     return function parse(obj) {
         let testKey;
-        for (var i = 0; i < len; ++i) {
+        for (let i = 0; i < len; ++i) {
             testKey = parts[i];
             if (!obj)
                 return;
